@@ -17,15 +17,18 @@ const app = Vue.createApp({
     // setName(event) {
     //   this.name = event.target.value;
     // },
-    setName(event, surname) {
+    setName(event) {
       //get event from browser
-      this.name = event.target.value + " " + surname;
+      this.name = event.target.value;
     },
     increment(num) {
       return (this.counter = this.counter + num);
     },
     decrement(num) {
       return (this.counter = this.counter - num);
+    },
+    resetInput() {
+      this.name = "";
     },
   },
 });
