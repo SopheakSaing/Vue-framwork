@@ -1,4 +1,4 @@
-const app = Vue.CreateAPP({
+const app = Vue.createApp({
   data() {
     return {
       boxASelected: false,
