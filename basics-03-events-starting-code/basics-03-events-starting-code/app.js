@@ -4,15 +4,42 @@ const app = Vue.createApp({
       counter: 5,
       name: "",
       confirmName: "",
+      fullname: "",
+      lastName: "",
     };
+  },
+  watch: {
+    counter(value) {
+      if (value > 50) {
+        const that = this;
+        setTimeout(function () {
+          that.counter = 0; //this not work to counter that is outside setTimeout func,
+        }, 1000);
+      }
+    },
+
+    // name(value) {
+    //   if (value === "") {
+    //     this.fullname = "";
+    //   } else {
+    //     this.fullname = value + " " + this.lastName;
+    //   }
+    // },
+    // lastName(value) {
+    //   if (value === "") {
+    //     this.fullname = "";
+    //   } else {
+    //     this.fullname = this.name + " " + value;
+    //   }
+    // },
   },
   computed: {
     outputFullname() {
       console.log("Running again...");
-      if (this.name == "") {
+      if (this.name === "" || this.lastName === "") {
         return "";
       }
-      return this.name + " " + "Saing";
+      return this.name + " " + this.lastName;
     },
   },
   methods: {

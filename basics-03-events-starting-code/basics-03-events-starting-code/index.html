@@ -24,8 +24,10 @@
       <p>Result: {{ counter }}</p>
       <!-- <input type="text" v-on:input="setName('')" /> -->
       <input type="text" v-model="name" />
+      <input type="text" v-model="lastName" />
       <button v-on:click="resetInput">Reset Input</button>
-      <p>Your Name: {{name + ' '+ 'Saing'}}</p>
+      <!-- <p>Your Name: {{name + ' '+ 'Saing'}}</p> -->
+      <p>Your Name: {{outputFullname}}</p>
       <form v-on:submit.prevent="submitForm">
         <!-- use .prevent instead of event.preventDefault(); - less code -->
         <input type="text" />
