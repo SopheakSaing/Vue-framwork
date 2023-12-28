@@ -19,7 +19,7 @@ export default {
         description: 'Site owner and admin',
         role: 'admin',
       },
-    };
+    }; 
   },
 };
 </script>
