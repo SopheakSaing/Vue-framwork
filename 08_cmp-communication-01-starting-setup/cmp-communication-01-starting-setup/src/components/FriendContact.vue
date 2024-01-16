@@ -14,6 +14,7 @@
         <strong>Email:</strong>
         {{ emailAddress }}
       </li>
+      <button @click="deleteFriend"></button>
     </ul>
   </li>
 </template>
