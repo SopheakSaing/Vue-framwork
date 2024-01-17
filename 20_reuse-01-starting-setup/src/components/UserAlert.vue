@@ -1,6 +1,5 @@
 <template>
-  <div class="backdrop" @click="closeDialog"></div>
-  <dialog open>
+  <div class="backdrop" @click="closeDialog">  <dialog open>
     <header>
       <h2>{{ title }}</h2>
     </header>
@@ -11,6 +10,8 @@
       <button @click="closeDialog">Close</button>
     </menu>
   </dialog>
+  </div>
+
 </template>
 
 <script>
