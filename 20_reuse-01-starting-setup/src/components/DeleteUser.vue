@@ -1,6 +1,6 @@
 <template>
   <div>
-    <user-alert v-if="alertIsVisible" title="Delete the User?" @close="hideAlert">
+    <user-alert v-if="alertIsVisible" :title="alertTitle" @close="hideAlert">
     <p>Do you want to continue with deleting a user?</p>
   </user-alert>
   <section>
@@ -19,6 +19,12 @@ import alertMinxin from '../mixins/alert.js'
 export default {
   components:{
     UserAlert
+  },
+  data(){
+    return{
+      alertTitle: 'Delete user!?',
+      alertIsVisible: true,
+    }
   },
   mixins: [alertMinxin]
 };
