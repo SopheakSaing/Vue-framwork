@@ -72,12 +72,12 @@ export default {
       //   rating: this.chosenRating,
       // });
 
-      fetch('https://learn-vue-framwork-default-rtdb.firebaseio.com/', {
+      fetch('https://learn-vue-framwork-default-rtdb.firebaseio.com/survey.json', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json', //send req as json format
         },
-        body: JSON.stringify({
+        body: JSON.stringify({ // stringify turn js obj to js format
           name: this.enteredName,
           rating: this.chosenRating,
         }),

@@ -94,7 +94,7 @@
       </div>
     </div>
     <div class="form-control">
-      <rating-control></rating-control>
+      <rating-control v-model="rating"></rating-control>
     </div>
     <div class="form-control">
       <input
@@ -125,6 +125,7 @@ export default {
       interest: [], //cuz all checkbox has same nam
       how: null,
       confirm: false,
+      rating: null,
       userNameValidity: 'pending',
     };
   },
