@@ -25,6 +25,34 @@ export default {
   components: {
     SurveyResult,
   },
+  data() {
+    return {
+      results: [],
+    };
+  },
+  methods: {
+    loadExperiences() {
+      fetch(
+        'https://learn-vue-framwork-default-rtdb.firebaseio.com/survey.json'
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then((data) => {
+          const results = [];
+          for (const id in data) {
+            results.push({
+              id: id,
+              name: data[id].name,
+              rating: data[id].rating,
+            });
+          }
+          this.results = results;
+        });
+    },
+  },
 };
 </script>
 
