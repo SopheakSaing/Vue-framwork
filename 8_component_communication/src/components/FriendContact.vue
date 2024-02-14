@@ -46,6 +46,7 @@ export default {
   //     // },
   //   },
   // },
+  // props: ["name", "phoneNumber", "emailAddress", "isFavorite"],
   props: ["name", "phoneNumber", "emailAddress", "isFavorite"],
   data() {
     return {
