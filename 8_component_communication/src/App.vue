@@ -5,14 +5,16 @@
     </header>
     <ul>
       <friend-contact
-      name="Sopheak Saing"
-      phone-number = "012202030"
-      email-address="saing@mail.com"
+        name="Sopheak Saing"
+        phone-number="012202030"
+        email-address="saing@mail.com"
+        is-favorite="1"
       ></friend-contact>
       <friend-contact
-      name="makara seang"
-      phone-number="makara@gmail.com"
-      email-address="makara@gsk.com"
+        name="makara seang"
+        phone-number="makara@gmail.com"
+        email-address="makara@gsk.com"
+        is-favorite="0"
       ></friend-contact>
     </ul>
   </section>
