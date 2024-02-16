@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ name }} {{ friendIsFavorie === "1" ? "(Favorite)" : "" }}</h2>
+    <h2>{{ name }} {{ friendIsFavorite === "1" ? "(Favorite)" : "" }}</h2>
     <button @click="toggleFav">Toggle Fav</button>
     <button @click="toggleDetails">
       {{ detailsAreVisible ? "Hide" : "Show" }} Details
@@ -57,7 +57,7 @@ export default {
         phone: "0123 45678 90",
         email: "manuel@localhost.com",
       },
-      friendIsFavorie: this.isFavorite,
+      friendIsFavorite: this.isFavorite,
     };
   },
   methods: {
@@ -65,10 +65,10 @@ export default {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
     toggleFav() {
-      if (this.friendIsFavorie === "1") {
-        this.friendIsFavorie = "0";
+      if (this.friendIsFavorite === "1") {
+        this.friendIsFavorite = "0";
       } else {
-        this.friendIsFavorie = "1";
+        this.friendIsFavorite = "1";
       }
     },
   },
