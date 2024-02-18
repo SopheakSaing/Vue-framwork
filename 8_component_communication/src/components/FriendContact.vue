@@ -70,7 +70,7 @@ export default {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
     toggleFav() {
-      this.$emit("toggle-favorite"); //this.id is the param for toggle-favorite
+      this.$emit("toggle-favorite", this.id); //this.id is the param for toggle-favorite
     },
   },
 };
