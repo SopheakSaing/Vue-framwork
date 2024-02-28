@@ -1,14 +1,20 @@
 <template>
-  <div>{{ content }}</div>
+  <!-- how could we recieve content from outside? -->
+  <div>
+    <slot></slot>
+  </div>
 </template>
 
 
-<script>
+<script scoped>
 export default {
   props: ["content"],
 };
 </script>
 <style scoped>
+/* change from section to div */
+/* section is used and style into different component */
+/* sol: create standable component */
 div {
   margin: 2rem auto;
   max-width: 30rem;
