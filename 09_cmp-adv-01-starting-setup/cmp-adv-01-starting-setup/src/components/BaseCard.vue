@@ -1,6 +1,9 @@
 <template>
   <!-- how could we recieve content from outside? -->
   <div>
+    <header>
+      <slot name="header"></slot>
+    </header>
     <slot></slot>
   </div>
 </template>
