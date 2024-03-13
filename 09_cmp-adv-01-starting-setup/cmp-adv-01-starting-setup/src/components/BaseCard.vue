@@ -18,6 +18,11 @@ export default {
 /* change from section to div */
 /* section is used and style into different component */
 /* sol: create standable component */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 div {
   margin: 2rem auto;
   max-width: 30rem;
