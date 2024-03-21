@@ -1,7 +1,9 @@
 <template>
   <section>
     <base-card>
-      <template v-slot:header>
+      <template v-slot:header
+        ><!-- v-slot or sorthand as # -->
+        <!-- but use v-slot to know where the content should be going to -->
         <h3>{{ fullName }}</h3>
         <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
       </template>

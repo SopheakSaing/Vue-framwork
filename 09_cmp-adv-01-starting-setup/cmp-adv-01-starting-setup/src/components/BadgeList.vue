@@ -1,9 +1,7 @@
 <template>
   <section>
     <base-card>
-      <template v-slot:header>
-        <h2>Available Badges</h2>
-      </template>
+    <!-- the default slot does come after the name slots: named slot > default slot -->
       <template v-slot:default>
         <ul>
           <li>

@@ -1,17 +1,27 @@
 <template>
   <!-- how could we recieve content from outside? -->
   <div>
-    <header>
-      <slot name="header"></slot>
+    <header v-if="$slots.header"> 
+      <!-- if slot header is truethy -->
+      <slot name="header">
+        <!-- <h2>The default</h2> -->
+      </slot>
     </header>
     <slot></slot>
+    <!-- slot without the wrapper would be the default slot -->
+    <!-- content of the slot would be wrapped inside the template -->
+    <!-- but use v-slot to know where the content should be going to -->
   </div>
 </template>
 
 
 <script scoped>
 export default {
-  props: ["content"],
+  mounted() {
+    //got called everyday time component being used
+    console.log(this.$slot.header);
+    // hole info about slot data
+  },
 };
 </script>
 <style scoped>
