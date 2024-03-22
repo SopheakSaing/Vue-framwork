@@ -3,11 +3,13 @@
   <h2>Manage Goals</h2>
   <input type="text" ref="goal" />
   <button @click="setGoals">Set Goals</button>
-  <error-alert-modal v-if="inputIsInvalid">
-    <h2>Input is Invalid</h2>
-    <p>Plz enter more characters!</p>
-    <button @click="confirmError()">Okeh</button>
-  </error-alert-modal>
+  <teleport to="body"
+    ><error-alert-modal v-if="inputIsInvalid">
+      <h2>Input is Invalid</h2>
+      <p>Plz enter more characters!</p>
+      <button @click="confirmError()">Okeh</button>
+    </error-alert-modal>
+  </teleport>
 </template>
 <script>
 import ErrorAlertModal from "./ErrorAlertModal.vue";

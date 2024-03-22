@@ -7,6 +7,7 @@
 
 <style scoped>
 dialog {
+  padding: 0;
   position: fixed;
   top: 20vh;
   left: 30%;
