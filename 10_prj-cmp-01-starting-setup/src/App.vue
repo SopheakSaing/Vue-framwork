@@ -1,6 +1,12 @@
-<template><ul></ul></template>
+<template>
+<learning-resources v-for="res in stroedRes" :key="res.id" :title="res.title" :description="res.description" :link="res.link"></learning-resources>
+</template>
 <script>
+import LearningResource from "./components/learning-resources";
 export default{
+    components: [
+        LearningResource
+    ],
     data() {
         return {
             stroedRes: [{
