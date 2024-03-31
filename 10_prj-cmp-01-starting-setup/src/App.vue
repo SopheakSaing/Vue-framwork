@@ -1,27 +1,44 @@
 <template>
-<learning-resources v-for="res in stroedRes" :key="res.id" :title="res.title" :description="res.description" :link="res.link"></learning-resources>
+  <stored-resources :resources="storedResources"></stored-resources>
 </template>
 <script>
-import LearningResource from "./components/learning-resources";
-export default{
-    components: [
-        LearningResource
-    ],
-    data() {
-        return {
-            stroedRes: [{
-                id: 'official',
-                title: 'office guid',
-                description: "loremabc",
-                link: "https://vuejs.org"
-            },
-            {
-                id: 'google',
-                title: 'google',
-                description: "loremabcde",
-                link: "https://google.com"
-            }]
-        }
-    }
-}
+// import LearningResource from './components/learning-resources/LearningResource.vue';
+import StoredResources from './components/learning-resources/StoredResources.vue';
+export default {
+  components: [StoredResources],
+  data() {
+    return {
+      storedResources: [
+        {
+          id: 'official',
+          title: 'office guid',
+          description: 'loremabc',
+          link: 'https://vuejs.org',
+        },
+        {
+          id: 'google',
+          title: 'google',
+          description: 'loremabcde',
+          link: 'https://google.com',
+        },
+      ],
+    };
+  },
+};
 </script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+</style>
