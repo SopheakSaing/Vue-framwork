@@ -52,6 +52,12 @@
   </form>
 </template>
 
+<script>
+export default{
+  
+}
+</script>
+
 <style scoped>
 form {
   margin: 2rem auto;
