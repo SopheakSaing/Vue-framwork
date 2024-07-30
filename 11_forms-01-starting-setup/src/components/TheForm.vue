@@ -1,8 +1,8 @@
 <template>
-  <form>
+  <form @submit.prevent="submitForm">
     <div class="form-control">
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" />
+      <input id="user-name" name="user-name" type="text" v-model="userName" />
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
@@ -54,7 +54,17 @@
 
 <script>
 export default{
-  
+  data() {
+    return {
+      userName: '',
+    }
+  },
+  methods: {
+    submitForm() {
+      console.log('Username: ', this.userName);
+      this.userName = '';
+    },
+  },
 }
 </script>
 
