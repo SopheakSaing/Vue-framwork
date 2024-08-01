@@ -46,6 +46,13 @@
         <input id="how-other" name="how" type="radio" value="other" v-model="how"/>
         <label for="how-other">Other</label>
       </div>
+      <div class="form-control">
+        <rating-control></rating-control>
+      </div>
+      <div>
+        <input type="checkbox" id="confirm-terms" name="confirm-term">
+        <label for="confirm-terms">Agree to term of use?</label>
+      </div>
     </div>
     <div>
       <button>Save Data</button>
@@ -54,7 +61,11 @@
 </template>
 
 <script>
+import RatingControl from './RatingControl.vue';
 export default{
+  components: {
+    RatingControl
+  },
   data() {
     return {
       userName: '',
