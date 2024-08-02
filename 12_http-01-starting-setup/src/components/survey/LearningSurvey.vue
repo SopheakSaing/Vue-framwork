@@ -72,7 +72,7 @@ export default {
       //   rating: this.chosenRating,
       // });
 
-      fetch('https://learn-vue-framwork-default-rtdb.firebaseio.com/survey.json', {
+      fetch('https://learning-survey-9612c-default-rtdb.asia-southeast1.firebasedatabase.app/surveys.json', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', //send req as json format

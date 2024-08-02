@@ -8,7 +8,8 @@
         >
       </div>
       <p v-if="isLoading">Loading...</p>
-      <ul v-else>
+      <p v-else-if="!isLoading && !results && results.length === 0">No experience found! Add it </p>
+      <ul v-else-if="!isLoading && results && results.length > 0"> <!-- only show if not loading & has data (length>0)  -->
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -37,11 +38,11 @@ export default {
     loadExperiences() {
       this.isLoading = true;
       fetch(
-        'https://learn-vue-framwork-default-rtdb.firebaseio.com/survey.json'
+        'https://learning-survey-9612c-default-rtdb.asia-southeast1.firebasedatabase.app/surveys.json'
       )
         .then((response) => {
           if (response.ok) {
-            return response.json();
+            return response.json(); //so that we can return the promise yielded
           }
         })
         .then((data) => {
@@ -54,7 +55,7 @@ export default {
               rating: data[id].rating,
             });
           }
-          this.results = results;
+          this.results = results; //refer to the vue instance obj
         });
     },
   },
