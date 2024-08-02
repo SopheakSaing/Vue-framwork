@@ -8,8 +8,9 @@
         >
       </div>
       <p v-if="isLoading">Loading...</p>
+      <p v-else-if="!isLoading && error">Fail to Fetch from the database</p>
       <p v-else-if="!isLoading && !results && results.length === 0">No experience found! Add it </p>
-      <ul v-else-if="!isLoading && results && results.length > 0"> <!-- only show if not loading & has data (length>0)  -->
+      <ul v-else> <!-- only show if not loading & has data (length>0)  - v-else-if="!isLoading && results && results.length > 0--> 
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -32,11 +33,13 @@ export default {
     return {
       results: [],
       isLoading: false,
+      error: null,
     };
   },
   methods: {
     loadExperiences() {
       this.isLoading = true;
+      this.error = null;
       fetch(
         'https://learning-survey-9612c-default-rtdb.asia-southeast1.firebasedatabase.app/surveys.json'
       )
@@ -56,6 +59,10 @@ export default {
             });
           }
           this.results = results; //refer to the vue instance obj
+        }).catch((error)=>{
+            console.log(error)
+            this.isLoading = false
+            this.error = "failed to fetch data"
         });
     },
   },
