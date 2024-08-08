@@ -14,19 +14,30 @@
 
 <script>
 import UserItem from '../users/UserItem.vue';
-
+//route: which provide acessibility to some attribute
 export default {
+  inject: ['users', 'teams'],
   components: {
-    UserItem
+    UserItem,
   },
   data() {
     return {
-      teamName: 'Test',
-      members: [
-        { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
-        { id: 'u2', fullName: 'Max Schwarz', role: 'Engineer' },
-      ],
+      teamName: '',
+      members: []
     };
+  },
+  created() {
+    console.log(this.$route.path); //teams/t1
+    const teamId = this.$route.params.teamId; //use the same path as in route -/teams/:teamId
+    const selectedTeam = this.teams.find((team) => team.id === teamId);
+    const members = selectedTeam.members;
+    const selectedMembers = [];
+    for (const member of members) {
+      const selectedUser = this.users.find((user) => user.id === member) //filter only member that has this id
+      selectedMembers.push(selectedUser);  //cus local constant, no need to use this
+    }
+    this.members = selectedMembers;
+    this.teamName = selectedTeam.name;
   },
 };
 </script>
