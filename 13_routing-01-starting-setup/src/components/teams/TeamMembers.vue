@@ -9,6 +9,7 @@
         :role="member.role"
       ></user-item>
     </ul>
+    <router-link to="/teams/t2">Go to Team2</router-link>
   </section>
 </template>
 
@@ -23,21 +24,32 @@ export default {
   data() {
     return {
       teamName: '',
-      members: []
+      members: [],
     };
   },
   created() {
-    console.log(this.$route.path); //teams/t1
-    const teamId = this.$route.params.teamId; //use the same path as in route -/teams/:teamId
-    const selectedTeam = this.teams.find((team) => team.id === teamId);
-    const members = selectedTeam.members;
-    const selectedMembers = [];
-    for (const member of members) {
-      const selectedUser = this.users.find((user) => user.id === member) //filter only member that has this id
-      selectedMembers.push(selectedUser);  //cus local constant, no need to use this
-    }
-    this.members = selectedMembers;
-    this.teamName = selectedTeam.name;
+    this.loadTeamMembers(this.$route);
+  },
+  methods: {
+    loadTeamMembers(route) {
+      console.log(this.$route.path); //teams/t1
+      //$route: hold latest info about latest route
+      const teamId = route.params.teamId; //use the same path as in route -/teams/:teamId
+      const selectedTeam = this.teams.find((team) => team.id === teamId);
+      const members = selectedTeam.members;
+      const selectedMembers = [];
+      for (const member of members) {
+        const selectedUser = this.users.find((user) => user.id === member); //filter only member that has this id
+        selectedMembers.push(selectedUser); //cus local constant, no need to use this
+      }
+      this.members = selectedMembers;
+      this.teamName = selectedTeam.name;
+    },
+  },
+  watch: {
+    $route(newRoute) {
+      this.loadTeamMembers(newRoute);
+    }, //to load the team member also when route change
   },
 };
 </script>

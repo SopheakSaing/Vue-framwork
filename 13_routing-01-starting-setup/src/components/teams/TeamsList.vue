@@ -7,6 +7,7 @@
       :id="team.id"
       :member-count="team.members.length"
     ></teams-item>
+    <router-link to="/teams/t2">Go to Team 2</router-link>
   </ul>
 </template>
 
