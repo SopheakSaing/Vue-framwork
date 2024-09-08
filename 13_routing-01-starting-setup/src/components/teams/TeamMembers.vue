@@ -18,6 +18,7 @@ import UserItem from '../users/UserItem.vue';
 //route: which provide acessibility to some attribute
 export default {
   inject: ['users', 'teams'],
+  props: ['teamId'],
   components: {
     UserItem,
   },
@@ -28,13 +29,15 @@ export default {
     };
   },
   created() {
-    this.loadTeamMembers(this.$route);
+    console.log(this.$route.path)
+    this.loadTeamMembers(this.teamId);
   },
   methods: {
-    loadTeamMembers(route) {
+    loadTeamMembers(teamId) {
       console.log(this.$route.path); //teams/t1
       //$route: hold latest info about latest route
-      const teamId = route.params.teamId; //use the same path as in route -/teams/:teamId
+      // const teamId = route.params.teamId; //use the same path as in route -/teams/:teamId
+      // console.log(teamId)
       const selectedTeam = this.teams.find((team) => team.id === teamId);
       const members = selectedTeam.members;
       const selectedMembers = [];
@@ -47,8 +50,8 @@ export default {
     },
   },
   watch: {
-    $route(newRoute) {
-      this.loadTeamMembers(newRoute);
+    teamId(newId) { //watch for prop changes
+      this.loadTeamMembers(newId);
     }, //to load the team member also when route change
   },
 };
