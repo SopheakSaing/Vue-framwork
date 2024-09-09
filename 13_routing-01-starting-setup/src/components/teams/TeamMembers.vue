@@ -29,8 +29,9 @@ export default {
     };
   },
   created() {
-    console.log(this.$route.path)
+    console.log(this.$route.path);
     this.loadTeamMembers(this.teamId);
+    console.log(this.$route.query);
   },
   methods: {
     loadTeamMembers(teamId) {
@@ -50,7 +51,8 @@ export default {
     },
   },
   watch: {
-    teamId(newId) { //watch for prop changes
+    teamId(newId) {
+      //watch for prop changes
       this.loadTeamMembers(newId);
     }, //to load the team member also when route change
   },

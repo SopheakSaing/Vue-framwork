@@ -13,7 +13,11 @@ export default {
   computed: {
     teamMemberLink() {
       // return { path: '/teams' + this.id};
-      return { name: 'team-members', param: { teamId: this.id } };
+      return {
+        name: 'team-members',
+        params: { teamId: this.id },
+        query: { sort: 'asc' },
+      };
     },
   },
 };
