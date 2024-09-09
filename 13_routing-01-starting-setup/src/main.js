@@ -4,23 +4,26 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import Teamslist from './components/teams/TeamsList.vue';
 import UsersList from './components/users/UsersList.vue';
-import TeamMembers from './components/teams/TeamMembers.vue'
+import TeamMembers from './components/teams/TeamMembers.vue';
 import NotFound from './components/nav/NotFound.vue';
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes: [
-        { path: '/', redirect: '/teams'},
-        { path: '/teams', component: Teamslist, children: [
-            { path: ':teamId', component: TeamMembers, props: true},
-        ]},
-        { path: '/users', component: UsersList},
-        {path: '/:notFound(.*)', component: NotFound}
-    ],
-    linkActiveClass:'active'
-})
+  history: createWebHistory(),
+  routes: [
+    { path: '/', redirect: '/teams' },
+    {
+      name:'teams',
+      path: '/teams',
+      component: Teamslist,
+      children: [{ name:'team-members',path: ':teamId', component: TeamMembers, props: true }],
+    },
+    { path: '/users', component: UsersList },
+    { path: '/:notFound(.*)', component: NotFound },
+  ],
+  linkActiveClass: 'active',
+});
 
-const app = createApp(App)
+const app = createApp(App);
 app.use(router);
 
 app.mount('#app');
