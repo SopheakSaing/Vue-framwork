@@ -1,8 +1,13 @@
 <template>
   <the-navigation @set-page="setActivePage"></the-navigation>
   <main>
-      <router-view></router-view>
+    <router-view></router-view>
+    <!--default route -without name  -->
   </main>
+  <footer>
+    <router-view name="footer"> </router-view
+    ><!-- route with name -->
+  </footer>
 </template>
 
 <script>
