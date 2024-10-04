@@ -9,6 +9,11 @@ const store = createStore({
         return {
             counter: 0
         };
+    },
+    mutations: {
+      increment(state) { //this state param will garantee by vuex
+        state.counter = state.counter + 2;
+      }  
     }
 })
 const app = createApp(App)
