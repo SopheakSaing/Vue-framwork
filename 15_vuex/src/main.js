@@ -13,6 +13,9 @@ const store = createStore({
     mutations: {
       increment(state) { //this state param will garantee by vuex
         state.counter = state.counter + 2;
+      },
+      increase(state, payload){
+        state.counter = state.counter + payload.value;
       }  
     }
 })
