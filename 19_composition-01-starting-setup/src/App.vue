@@ -2,6 +2,7 @@
   <section class="container">
     <h2>{{ user.name }}</h2>
     <h2>{{ user.age }}</h2>
+    <button @click="setNewAge()">Change Age</button>
   </section>
 </template>
 
@@ -25,7 +26,11 @@ export default {
       user.age = 19
     }, 2000)
 
-    return {user}
+    function setNewAge() {
+      user.age = 20
+    }
+
+    return {user, setNewAge} //not executing the func() but storing its pointer
   }
 };
 </script>
