@@ -1,16 +1,21 @@
 <template>
   <section class="container">
-    <h2>{{ userName }}</h2>
+    <h2>{{ userName.value }}</h2>
   </section>
 </template>
 
 <script>
+import { ref } from 'vue'
 export default {
-  data() {
-    return {
-      userName: 'Maximilian',
-    };
-  },
+  setup() {
+    const userName = ref('Meisme Alpha')
+
+    setTimeout(()=>{
+      userName.value = 'Pheak'
+    }, 2000)
+
+    return {userName}
+  }
 };
 </script>
 
