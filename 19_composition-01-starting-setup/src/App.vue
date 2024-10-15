@@ -8,7 +8,7 @@
 import { ref } from 'vue'
 export default {
   setup() {
-    const userName = ref('Meisme Alpha')
+    const userName = ref('Meisme Alpha test')
 
     setTimeout(()=>{
       userName.value = 'Pheak'
