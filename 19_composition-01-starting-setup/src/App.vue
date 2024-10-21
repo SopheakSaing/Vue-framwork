@@ -5,7 +5,8 @@
     <button @click="setNewAge()">Change Age</button>
     <div>
       <input type="text" placeholder="First Name" v-model="firstName" />
-      <input type="text" placeholder="Last Name" v-model="lastName" />
+      <input type="text" placeholder="Last Name" ref="lastNameInput" />
+      <button @click="setLastName">setLastName</button>
     </div>
   </section>
 </template>
@@ -18,6 +19,7 @@ export default {
     // const userAge = ref(20)
     const firstName = ref('');
     const lastName = ref('');
+    const lastNameInput = ref(null);
     const age = ref(31);
 
     const fullName = computed(function () {
@@ -44,10 +46,11 @@ export default {
     //     firstName.value = event.target.value;
     // }
 
-    // function setLastName(event) {
-    //     lastName.value = event.target.value;
-    // }
-    return { age, fullName, setNewAge, firstName, lastName }; //not executing the func() but storing its pointer
+    function setLastName() {
+        lastName.value = lastNameInput.value.value //first value refer to ref(), 2nd value refer to property of el obj
+    }
+
+    return { age, fullName, setNewAge, firstName, lastName, lastNameInput, setLastName }; //not executing the func() but storing its pointer
   },
 };
 </script>
