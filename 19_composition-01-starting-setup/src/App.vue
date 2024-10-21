@@ -1,36 +1,48 @@
 <template>
     <section class="container">
-        <h2>{{ user.name }}</h2>
-        <h2>{{ user.age }}</h2>
+        <h2>{{ fullName }}</h2>
+        <h2>{{ age }}</h2>
         <button @click="setNewAge()">Change Age</button>
+        <div>
+            <input type="text" placeholder="First Name" @input="setFirstName">
+            <input type="text" placeholder="Last Name" @input="setLastName">
+        </div>
     </section>
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { ref, computed } from 'vue'
 export default {
     setup() {
         // const userName = ref('Meisme Alpha test')
         // const userAge = ref(20)
-        const user = reactive({
-            name: 'Meisme Alpha',
-            age: 20
-        })
+        const firstName = ref('');
+        const lastName = ref('')
+        const age = ref(31);
 
-        setTimeout(() => {
-            //===with ref()=========
-            // userName.value = 'Pheak'
-            // userAge.value = '19'
-            //===with reactive()=====
-            user.name = 'Pheak'
-            user.age = 19
-        }, 2000)
-
+        
         function setNewAge() {
-            user.age = 20
+            age.value = ref('32')
         }
 
-        return { user, setNewAge } //not executing the func() but storing its pointer
+        computed(function() {
+            return firstName.value + ' ' + lastName.value
+        });
+
+        function setFirstName(event) {
+            firstName.value = event.target.value;
+        }
+
+        
+        const fullName = computed(function()  {
+            return firstName.value + ' ' + lastName.value
+        });
+
+        function setLastName(event) {
+            lastName.value = event.target.value;
+        }
+
+        return { age, fullName, setFirstName, setLastName, setNewAge} //not executing the func() but storing its pointer
     }
 };
 </script>
