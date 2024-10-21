@@ -24,7 +24,6 @@ export default {
       return firstName.value + ' ' + lastName.value;
     });
 
-
     function setNewAge() {
       age.value = 32;
     }
