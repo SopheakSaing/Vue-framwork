@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <user-data :user-name="userName" :age="age"></user-data>
+    <user-data :user-name="userName"></user-data>
     <h2>{{ fullName }}</h2>
     <h2>{{ age }}</h2>
     <button @click="setNewAge()">Change Age</button>
@@ -16,6 +16,7 @@
 import { ref, computed, watch } from 'vue';
 import UserData from './components/UserData.vue'
 export default {
+  props: ['firstName', 'lastName'],
   components: {
     UserData
   },
