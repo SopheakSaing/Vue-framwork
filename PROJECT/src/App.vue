@@ -36,13 +36,18 @@ const totalExpense = computed(() => {
         return acc + transaction.amount;
       }, 0).toFixed(2);//to get 2 dec value
 })
+
+const handleSubmitTransaction = (transaction) => {
+  console.log('transactionData', transaction);
+}
+
 </script>
 <template>
   <Header/>
   <div class="container">
     <Balance :total/>
-    <IncomeExpense :total-income :total-expense/>
+    <IncomeExpense :total-income="+totalIncome" :total-expense="+totalExpense"/>
     <TransactionList :transactions="transactions"/>
-    <TransactionForm/>
+    <TransactionForm @transactions-submitted="handleSubmitTransaction"/>
   </div>
 </template>
