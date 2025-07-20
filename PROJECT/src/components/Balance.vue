@@ -1,10 +1,14 @@
-<script setup lang="ts">
-
+<script setup>
+import { defineProps } from 'vue';
+ const props = defineProps({
+   total: Number,
+   required: true
+ })
 </script>
 
 <template>
   <h4>Your Balance</h4>
-  <h1>$0.00</h1>
+  <h1>${{total}}</h1>
 </template>
 
 <style scoped>
