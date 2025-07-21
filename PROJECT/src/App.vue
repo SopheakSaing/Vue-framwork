@@ -4,6 +4,8 @@ import Balance from "@/components/Balance.vue";
 import IncomeExpense from "@/components/IncomeExpense.vue";
 import TransactionList from "@/components/TransactionList.vue"
 import TransactionForm from "@/components/TransactionForm.vue";
+import {useToast} from "vue-toastification";
+const toast = useToast();
 import { ref, computed } from "vue";
 const transactions = ref([ //want this to reactive
   {id: 1, item: 'Milk', amount: -5},
@@ -51,6 +53,11 @@ const generateUniqueId = () => {
   return Math.floor(Math.random() * 100000)
 }
 
+const handleDeleteTransaction = (id) => {
+ transactions.value = transactions.value.filter((transaction) => transaction.id !== id); //each tran filter out transact id that not equal to id that parse int
+ toast.success("transaction removed!");
+}
+
 
 </script>
 <template>
@@ -58,7 +65,7 @@ const generateUniqueId = () => {
   <div class="container">
     <Balance :total/>
     <IncomeExpense :total-income="+totalIncome" :total-expense="+totalExpense"/>
-    <TransactionList :transactions="transactions"/>
+    <TransactionList :transactions="transactions" @transactionDeleted="handleDeleteTransaction"/>
     <TransactionForm @transactions-submitted="handleSubmitTransaction"/>
   </div>
 </template>
