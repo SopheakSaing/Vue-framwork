@@ -1,0 +1,15 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color:grey;
+
+  /* flexbox */
+  display: flex; 
+  align-items: center;  /* veritcally */
+  justify-content: center; /* horizontally */
+  /* === */
+}
+
+div{
+  text-align: center;
+}
