@@ -1,9 +1,9 @@
 <script setup>
-import Header from "@/components/Header.vue";
-import Balance from "@/components/Balance.vue";
-import IncomeExpense from "@/components/IncomeExpense.vue";
-import TransactionList from "@/components/TransactionList.vue"
-import TransactionForm from "@/components/TransactionForm.vue";
+import Header from "./components/Header.vue";
+import Balance from "./components/Balance.vue";
+import IncomeExpense from "./components/IncomeExpense.vue";
+import TransactionList from "./components/TransactionList.vue"
+import TransactionForm from "./components/TransactionForm.vue";
 import {useToast} from "vue-toastification";
 const toast = useToast();
 import { ref, computed, onMounted } from "vue";
