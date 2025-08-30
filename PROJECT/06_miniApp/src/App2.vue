@@ -1,22 +1,45 @@
 <script>
+import { ref, onMounted } from 'vue';
 export default {
-  data() {
-    return {
-      name: 'meisme sofie',
-      status: 'active',
-      tasks: ['task one', 'task two', 'task three'],
-      link: 'https://github.com',
-    }
-  },
-  methods: {
-    onToggleStatus() {
-      if (this.status === 'active') {
-      this.staus = 'pending'
-    } else if(this.status === 'pending') {
-        this.staus = 'inactive'
-    } else {
-        this.status = 'inactdoneive';
+  setup() {
+    const name = 'Jonh Doe';
+    const status = ref('active');
+    const tasks = ref(['Task one', 'Task two', 'Task three', 'Task four', 'Task five']);
+    const newTask = ref('wwwwwwksksks');
+
+    const toggleStatus = () => {
+      if (status.value === 'active') {
+        status.value = 'pending'
+      } else if(status.value === 'pending') {
+        status.value = 'inactive'
+      } else {
+        status.value = 'done';
       }
+    }
+
+    const addTask = () => {
+      if (newTask.value.trim() !== '') {
+        tasks.value.push(newTask.value);
+        newTask.value = '';
+      }
+    }
+
+    const deleteTask = (index) => {
+      tasks.value.splice(index, 1)
+    };
+
+    onMounted(async () => {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+        const data = await response.json();
+        tasks.value = data.map((task) => task.title)
+      } catch (error) {
+        console.log('Error fetching tasks');
+      }
+    });
+
+    return {
+      name, status, tasks, toggleStatus, addTask, newTask, deleteTask
     }
   }
 }
@@ -28,11 +51,19 @@ export default {
   <p v-else-if="status==='pending'">User is pending</p>
   <p v-else> User is inactive</p>
 
+  <form @submit.prevent="addTask">
+    <label for="newTask">Add Task</label>
+    <input id="newTask" v-model="newTask" name="newTask" type="text"/>
+    <button type="submit">Submit</button>
+  </form>
+
   <h3>Tasks:</h3>
   <ul>
-    <li v-for="task in tasks" :key="task">{{ task }}</li>
+    <li v-for="(task, index) in tasks" :key="task"><span>{{ task }}</span>
+      <button @click="deleteTask(index)">x</button>
+    </li>
   </ul>
-  <a :href="link">Click for Google</a>
   <br/>
-  <button @click="onToggleStatus">Change Status</button>
+  <button @click="toggleStatus">Change Status</button>
+
 </template>
